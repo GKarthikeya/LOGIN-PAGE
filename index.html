@@ -1,191 +1,356 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proced</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
-        }
-        header {
-            background-color: #212529;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
-        header h1 {
-            font-size: 32px;
-            margin: 0;
-        }
-        header p {
-            font-size: 18px;
-            margin: 5px 0 0;
-            font-style: italic;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #343a40;
-            padding: 10px 0;
-        }
-        nav a {
-            color: #fff;
-            padding: 14px 20px;
-            text-decoration: none;
-            text-align: center;
-            font-weight: bold;
-        }
-        nav a:hover {
-            background-color: #495057;
-        }
-        .search-container {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .search-container input {
-            padding: 10px;
-            width: 50%;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        .container {
-            padding: 40px;
-            max-width: 1200px;
-            margin: auto;
-        }
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .product-card {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-        }
-        .product-card img {
-            max-width: 100%;
-            border-radius: 8px;
-        }
-        .product-card h3 {
-            font-size: 20px;
-            margin: 10px 0;
-        }
-        .product-card p {
-            font-size: 16px;
-            color: #555;
-        }
-        .product-card button {
-            background-color: #212529;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            width: 100%;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .product-card button:hover {
-            background-color: #495057;
-        }
-        .coffee-section {
-            background-color: #fff;
-            padding: 40px;
-            margin-top: 40px;
-            text-align: center;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        footer {
-            background-color: #212529;
-            color: #fff;
-            text-align: center;
-            padding: 15px 0;
-            margin-top: 40px;
-        }
-    </style>
-    <script>
-        let cart = [];
-
-        function addToCart(productName, price) {
-            cart.push({ name: productName, price: price });
-            alert(`${productName} has been added to the cart!`);
-            console.log(cart);
-        }
-
-        function searchProducts() {
-            let input = document.getElementById('search-bar').value.toLowerCase();
-            let products = document.querySelectorAll('.product-card');
-            
-            products.forEach(product => {
-                let name = product.querySelector('h3').innerText.toLowerCase();
-                if (name.includes(input)) {
-                    product.style.display = "block";
-                } else {
-                    product.style.display = "none";
-                }
-            });
-        }
-    </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Unsolved — Share True Strange Events</title>
+  <meta name="description" content="Unsolved — share true strange events & real world problems" />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0b1220;--card:#0f1724;--muted:#94a3b8}
+    html,body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial}
+    .app-bg{background:linear-gradient(180deg,#071021 0%,#081426 40%,#071020 100%);}
+    .glass{backdrop-filter: blur(6px); background-color: rgba(255,255,255,0.02);}
+    .logo-glow{filter:drop-shadow(0 6px 18px rgba(96,165,250,0.12));}
+  </style>
 </head>
-<body>
-    <header>
-        <h1>Proced</h1>
-        <p>Be One in a Million</p>
-    </header>
+<body class="min-h-screen app-bg text-slate-100 antialiased">
+  <header class="w-full border-b border-slate-800/60">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-md bg-gradient-to-tr from-indigo-600 to-cyan-400 flex items-center justify-center logo-glow">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v6"></path><path d="M6 8h12"></path><path d="M3 22h18"></path><path d="M9 12a3 3 0 006 0"></path></svg>
+        </div>
+        <div>
+          <h1 class="text-lg font-bold">Unsolved</h1>
+          <p class="text-xs text-slate-400 -mt-1">True events. Strange problems.</p>
+        </div>
+      </div>
 
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#shop">Shop</a>
-        <a href="#cart">Cart</a>
-        <a href="#contact">Contact</a>
-    </nav>
+      <div class="flex items-center gap-3">
+        <div class="hidden sm:flex items-center gap-2">
+          <input id="search" class="bg-transparent border border-slate-700 px-3 py-1 rounded-md text-sm focus:outline-none" placeholder="Search stories or tags...">
+        </div>
+        <button id="newPostBtn" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 rounded-md text-sm font-semibold">+ New Post</button>
+      </div>
+    </div>
+  </header>
 
-    <div class="search-container">
-        <input type="text" id="search-bar" onkeyup="searchProducts()" placeholder="Search for clothes...">
-    </div>
+  <main class="max-w-5xl mx-auto px-4 py-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- LEFT: Feed -->
+    <section class="md:col-span-2">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-xl font-semibold">Feed</h2>
+        <div class="text-sm text-slate-400">Showing <span id="visibleCount">0</span> posts</div>
+      </div>
 
-    <div class="container">
-        <section id="shop">
-            <h2>2025 Fashion Collection</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <img src="https://www.bombayshirts.com/cdn/shop/files/146eef39-7732-7a00-be57-fe5c95943823_Spruce_20Soft_20Linen_20Shirt_20-_202_cd68e08c-edac-4ebc-b434-54df8ae28ce4.jpg?v=1721399228" alt="Elegant Dress">
-                    <h3>Elegant Dress</h3>
-                    <p>₹799</p>
-                    <button onclick="addToCart('Elegant Dress', 799)">Add to Cart</button>
-                </div>
-                <div class="product-card">
-                    <img src="https://www.bombayshirts.com/cdn/shop/files/906f0434-7481-77ce-6ddb-1c3f76da2cba_Cedarwood_20Soft_20Linen_20Shirt_20-_202_16cf545a-551a-4a09-a96e-de19c1b01481.jpg?v=1725101403" alt="Trendy Jacket">
-                    <h3>Trendy Jacket</h3>
-                    <p>₹999</p>
-                    <button onclick="addToCart('Trendy Jacket', 999)">Add to Cart</button>
-                </div>
-            </div>
-        </section>
-    </div>
+      <div id="feed" class="space-y-4">
+        <!-- Posts injected here -->
+      </div>
 
-    <footer>
-        <p>&copy; 2025 Proced.in. All rights reserved.</p>
-    </footer>
+      <div id="emptyState" class="hidden mt-6 p-6 glass rounded-md border border-slate-700 text-slate-300">
+        <h3 class="text-lg font-medium">No posts yet</h3>
+        <p class="text-sm text-slate-400 mt-2">Be the first to share a true strange event or an unsolved real problem.</p>
+        <div class="mt-3">
+          <button id="emptyNew" class="px-3 py-2 bg-indigo-600 rounded-md">Create a post</button>
+        </div>
+      </div>
+    </section>
 
-    <!-- ✅ Adsterra Script Added -->
-    <script type='text/javascript' src='//pl27269577.profitableratecpm.com/17/6f/ae/176fae724fa2c2c5d0d27ad6ba3156af.js'></script>
+    <!-- RIGHT: Sidebar -->
+    <aside class="md:col-span-1">
+      <div class="glass p-4 rounded-md border border-slate-700 mb-4">
+        <h3 class="font-semibold">Categories</h3>
+        <div class="mt-3 grid grid-cols-2 gap-2">
+          <button class="catBtn px-2 py-1 text-sm rounded-md border border-slate-700">All</button>
+          <button class="catBtn px-2 py-1 text-sm rounded-md border border-slate-700">Mystery</button>
+          <button class="catBtn px-2 py-1 text-sm rounded-md border border-slate-700">Paranormal</button>
+          <button class="catBtn px-2 py-1 text-sm rounded-md border border-slate-700">Problems</button>
+          <button class="catBtn px-2 py-1 text-sm rounded-md border border-slate-700">Tech</button>
+          <button class="catBtn px-2 py-1 text-sm rounded-md border border-slate-700">Funny</button>
+        </div>
+      </div>
 
+      <div class="glass p-4 rounded-md border border-slate-700 mb-4">
+        <h3 class="font-semibold">Top Tags</h3>
+        <div id="tags" class="mt-3 flex flex-wrap gap-2 text-sm">
+          <!-- tags inserted -->
+        </div>
+      </div>
+
+      <div class="glass p-4 rounded-md border border-slate-700">
+        <h3 class="font-semibold">About Unsolved</h3>
+        <p class="text-sm text-slate-400 mt-2">Share real events, report odd problems, and help each other find answers. Please be honest — this is for true things.</p>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Post Modal (hidden) -->
+  <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center px-4 py-6">
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="relative w-full max-w-2xl bg-[#061021] border border-slate-800 rounded-lg p-6 glass">
+      <div class="flex items-start justify-between gap-4">
+        <h3 class="text-lg font-semibold">Create a new post</h3>
+        <button id="closeModal" class="text-slate-400 hover:text-white">✕</button>
+      </div>
+
+      <div class="mt-4 space-y-3">
+        <input id="postTitle" class="w-full bg-transparent border border-slate-700 px-3 py-2 rounded-md" placeholder="Short title (what happened)">
+        <textarea id="postBody" rows="6" class="w-full bg-transparent border border-slate-700 px-3 py-2 rounded-md" placeholder="Describe the event or problem. Be honest — this is for true events."></textarea>
+        <div class="flex items-center gap-3">
+          <select id="postCategory" class="bg-transparent border border-slate-700 px-2 py-1 rounded-md text-sm">
+            <option> Mystery</option>
+            <option> Paranormal</option>
+            <option> Problems</option>
+            <option> Tech</option>
+            <option> Funny</option>
+          </select>
+          <input id="postTags" class="bg-transparent border border-slate-700 px-2 py-1 rounded-md text-sm" placeholder="comma,separated,tags">
+          <label class="ml-auto flex items-center gap-2 text-sm text-slate-400"><input type="checkbox" id="anonymous" class="checked:bg-indigo-500"> Post anonymously</label>
+        </div>
+
+        <div class="flex items-center justify-end gap-2">
+          <button id="postSave" class="px-3 py-1.5 bg-indigo-600 rounded-md font-semibold">Post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <template id="postTemplate">
+    <article class="p-4 glass rounded-md border border-slate-700">
+      <header class="flex items-start gap-3">
+        <div class="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center text-sm font-semibold">U</div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between">
+            <div class="text-sm">
+              <div class="post-title font-semibold"></div>
+              <div class="text-xs text-slate-400 post-meta"></div>
+            </div>
+            <div class="text-sm text-slate-400">#<span class="post-cat"></span></div>
+          </div>
+        </div>
+      </header>
+
+      <div class="mt-3 text-sm post-body text-slate-200"></div>
+
+      <footer class="mt-4 flex items-center gap-3 text-sm text-slate-400">
+        <button class="likeBtn px-2 py-1 rounded-md border border-slate-700">👍 <span class="likeCount">0</span></button>
+        <button class="commentToggle px-2 py-1 rounded-md border border-slate-700">💬 <span class="commentCount">0</span></button>
+        <button class="reportBtn px-2 py-1 rounded-md border border-slate-700">⚑ Report</button>
+        <div class="ml-auto text-xs text-slate-500 post-date"></div>
+      </footer>
+
+      <div class="mt-3 hidden commentsArea border-t border-slate-800 pt-3">
+        <div class="space-y-2 commentList"></div>
+        <div class="mt-3 flex gap-2">
+          <input class="newComment flex-1 bg-transparent border border-slate-700 px-2 py-1 rounded-md text-sm" placeholder="Write a helpful comment...">
+          <button class="addComment px-3 py-1 rounded-md border border-slate-700">Reply</button>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script>
+    // Simple front-end prototype for Unsolved — data saved in localStorage.
+    const POSTS_KEY = 'unsolved_posts_v1';
+
+    // sample posts if empty
+    const sample = [
+      {
+        id: crypto.randomUUID(),
+        title: 'Strange lights over neighborhood',
+        body: 'Last Tuesday at 1:12 AM multiple neighbors saw a cluster of blue lights moving silently across the sky for 3 minutes. No aircraft sound. Anyone else?',
+        category: 'Mystery',
+        tags: ['lights','ufo'],
+        anonymous: true,
+        likes: 4,
+        comments: [{id:crypto.randomUUID(),text:'I saw it too!',author:'Ankita'}],
+        date: Date.now() - 1000*60*60*24*2
+      },
+      {
+        id: crypto.randomUUID(),
+        title: 'Phone shows battery drain only in shade',
+        body: 'Whenever I take my phone into a shaded area it instantly drops 10% battery. Works fine in sunlight. This is a real strange problem — any ideas?',
+        category: 'Tech',
+        tags: ['battery','phone','weird'],
+        anonymous: false,
+        likes: 2,
+        comments: [],
+        date: Date.now() - 1000*60*60*8
+      }
+    ];
+
+    function loadPosts(){
+      const raw = localStorage.getItem(POSTS_KEY);
+      if(!raw){
+        localStorage.setItem(POSTS_KEY, JSON.stringify(sample));
+        return sample.slice();
+      }
+      try{ return JSON.parse(raw); }catch(e){ localStorage.removeItem(POSTS_KEY); return sample.slice(); }
+    }
+
+    function savePosts(posts){ localStorage.setItem(POSTS_KEY, JSON.stringify(posts)); }
+
+    let posts = loadPosts();
+
+    // DOM refs
+    const feed = document.getElementById('feed');
+    const visibleCount = document.getElementById('visibleCount');
+    const modal = document.getElementById('modal');
+    const newPostBtn = document.getElementById('newPostBtn');
+    const closeModal = document.getElementById('closeModal');
+    const postSave = document.getElementById('postSave');
+    const postTitle = document.getElementById('postTitle');
+    const postBody = document.getElementById('postBody');
+    const postCategory = document.getElementById('postCategory');
+    const postTags = document.getElementById('postTags');
+    const anonymous = document.getElementById('anonymous');
+    const emptyState = document.getElementById('emptyState');
+    const emptyNew = document.getElementById('emptyNew');
+    const search = document.getElementById('search');
+
+    function formatDate(ts){
+      const d = new Date(ts);
+      return d.toLocaleString();
+    }
+
+    function renderTags(){
+      const tagWrap = document.getElementById('tags');
+      const all = new Map();
+      posts.flatMap(p=>p.tags||[]).forEach(t=> all.set(t.toLowerCase(),(all.get(t.toLowerCase())||0)+1));
+      tagWrap.innerHTML = '';
+      Array.from(all.entries()).slice(0,10).forEach(([t,c])=>{
+        const btn = document.createElement('button');
+        btn.className='px-2 py-1 text-xs rounded-md border border-slate-700';
+        btn.textContent = `#${t} (${c})`;
+        btn.onclick = ()=>{ filterByTag(t); };
+        tagWrap.appendChild(btn);
+      });
+    }
+
+    function filterByTag(t){
+      document.querySelectorAll('.catBtn').forEach(b=>b.classList.remove('bg-indigo-700'));
+      renderFeed(posts.filter(p=> (p.tags||[]).map(x=>x.toLowerCase()).includes(t)));
+    }
+
+    function renderFeed(list){
+      feed.innerHTML = '';
+      if(!list||list.length===0){ emptyState.classList.remove('hidden'); visibleCount.textContent = 0; return; }
+      emptyState.classList.add('hidden');
+      visibleCount.textContent = list.length;
+
+      const tpl = document.getElementById('postTemplate');
+      list.sort((a,b)=>b.date-a.date).forEach(p=>{
+        const node = tpl.content.cloneNode(true);
+        const art = node.querySelector('article');
+        art.dataset.id = p.id;
+        node.querySelector('.post-title').textContent = p.title || '(no title)';
+        node.querySelector('.post-body').textContent = p.body;
+        node.querySelector('.post-meta').textContent = p.anonymous ? 'Anonymous' : 'By User';
+        node.querySelector('.post-cat').textContent = p.category;
+        node.querySelector('.likeCount').textContent = p.likes||0;
+        node.querySelector('.commentCount').textContent = (p.comments||[]).length;
+        node.querySelector('.post-date').textContent = formatDate(p.date);
+
+        // comments
+        const commentsArea = node.querySelector('.commentsArea');
+        const commentList = node.querySelector('.commentList');
+        (p.comments||[]).forEach(c=>{
+          const div = document.createElement('div');
+          div.className='text-sm bg-slate-900/30 p-2 rounded-md';
+          div.textContent = `${c.author||'Anon'}: ${c.text}`;
+          commentList.appendChild(div);
+        });
+
+        // likes
+        node.querySelector('.likeBtn').onclick = ()=>{
+          p.likes = (p.likes||0)+1; savePosts(posts); renderFeed(posts);
+        };
+
+        // comment toggle
+        node.querySelector('.commentToggle').onclick = (e)=>{
+          commentsArea.classList.toggle('hidden');
+        };
+
+        // add comment
+        node.querySelector('.addComment').onclick = ()=>{
+          const input = art.querySelector('.newComment');
+          const text = input.value.trim(); if(!text) return;
+          p.comments = p.comments || [];
+          p.comments.push({id:crypto.randomUUID(), text, author:'User'});
+          savePosts(posts); renderFeed(posts);
+        };
+
+        // report
+        node.querySelector('.reportBtn').onclick = ()=>{
+          if(confirm('Report this post as inappropriate?')){
+            // mark as reported (in this prototype we'll just remove)
+            posts = posts.filter(x=>x.id!==p.id); savePosts(posts); renderFeed(posts);
+            alert('Post removed (prototype). In a real app moderators would review this.');
+          }
+        };
+
+        feed.appendChild(node);
+      });
+    }
+
+    // initial render
+    renderFeed(posts);
+    renderTags();
+
+    // category buttons
+    document.querySelectorAll('.catBtn').forEach(b=>{
+      b.onclick = ()=>{
+        const cat = b.textContent.trim();
+        document.querySelectorAll('.catBtn').forEach(x=>x.classList.remove('bg-indigo-700','text-white'));
+        b.classList.add('bg-indigo-700','text-white');
+        if(cat==='All') renderFeed(posts); else renderFeed(posts.filter(p=>p.category.toLowerCase()===cat.toLowerCase()));
+      };
+    });
+
+    // modal actions
+    newPostBtn.onclick = ()=>{ modal.classList.remove('hidden'); modal.style.display='flex'; }
+    emptyNew.onclick = ()=>{ modal.classList.remove('hidden'); modal.style.display='flex'; }
+    closeModal.onclick = ()=>{ modal.classList.add('hidden'); modal.style.display='none'; }
+
+    postSave.onclick = ()=>{
+      const title = postTitle.value.trim();
+      const body = postBody.value.trim();
+      if(!body){ alert('Please write the event or problem.'); return; }
+      const p = {
+        id: crypto.randomUUID(),
+        title: title || body.slice(0,40),
+        body,
+        category: postCategory.value.trim() || 'Misc',
+        tags: postTags.value.split(',').map(t=>t.trim()).filter(Boolean),
+        anonymous: anonymous.checked,
+        likes:0,
+        comments:[],
+        date: Date.now()
+      };
+      posts.unshift(p); savePosts(posts); renderFeed(posts); renderTags();
+      // reset
+      postTitle.value=''; postBody.value=''; postTags.value=''; anonymous.checked=false;
+      modal.classList.add('hidden'); modal.style.display='none';
+    };
+
+    // search
+    search.addEventListener('input', ()=>{
+      const q = search.value.trim().toLowerCase();
+      if(!q){ renderFeed(posts); return; }
+      renderFeed(posts.filter(p=> (p.title+p.body+(p.tags||[]).join(' ')).toLowerCase().includes(q) ));
+    });
+
+    // accessibility: close modal with escape
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ modal.classList.add('hidden'); modal.style.display='none'; } });
+
+    // small UX: click outside modal closes
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) { modal.classList.add('hidden'); modal.style.display='none'; } });
+
+  </script>
 </body>
 </html>
